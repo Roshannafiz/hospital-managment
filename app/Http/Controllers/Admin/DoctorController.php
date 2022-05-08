@@ -1,0 +1,132 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Doctor;
+use App\Models\Speciality;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use File;
+
+class DoctorController extends Controller
+{
+
+    // Our Doctor Index View
+    public function index()
+    {
+        // Get All Doctor
+        $doctors = DB::table('doctors')
+            ->join('specialities', 'doctors.speciality_id', '=', 'specialities.id')->select([
+                'doctors.id',
+                'doctors.doctor_name',
+                'doctors.phone',
+                'doctors.room_number',
+                'doctors.image',
+                'doctors.status',
+                'specialities.speciality_name',
+            ])->get();
+
+        return view('admin.doctor.index', compact('doctors'));
+    }
+
+
+    // Doctor Create View
+    public function doctor_create()
+    {
+        // Get All Speciality
+        $specialities = Speciality::all();
+        return view('admin.doctor.create', compact('specialities'));
+    }
+
+
+    // Upload Doctor In Database
+    public function store(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            $doctor = new Doctor();
+            $request->validate([
+                'doctor_name' => 'required',
+                'phone' => 'required',
+                'speciality' => 'required',
+                'room_number' => 'required',
+                'image' => 'required | image',
+            ]);
+            $doctor->doctor_name = $data['doctor_name'];
+            $doctor->phone = $data['phone'];
+            $doctor->speciality_id = $data['speciality'];
+            $doctor->room_number = $data['room_number'];
+
+            // Doctor Image
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $file->move('admin/images/upload-doctor', $filename);
+                $doctor->image = $filename;
+            }
+            $doctor->save();
+            return redirect()->back()->with('message', "Doctor Created Successfully 🙂");
+        }
+    }
+
+
+    // Update Doctor To First Get ID
+    public function edit($id)
+    {
+        $doctor = Doctor::find($id);
+        $specialities = Speciality::all();
+        return view('admin.doctor.edit', compact('doctor', 'specialities'));
+    }
+
+
+    // Update Doctor In Database
+    public function update(Request $request, $id)
+    {
+        $doctor = Doctor::find($id);
+        $request->validate([
+            'doctor_name' => 'required',
+            'phone' => 'required',
+            'room_number' => 'required',
+        ]);
+        if ($request->hasFile('image')) {
+            $path = 'admin/images/upload-doctor/' . $doctor->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('admin/images/upload-doctor', $filename);
+            $doctor->image = $filename;
+        }
+        $doctor->doctor_name = $request->doctor_name;
+        $doctor->phone = $request->phone;
+        $doctor->speciality_id = $request->speciality;
+        $doctor->room_number = $request->room_number;
+        $doctor->update();
+        return redirect('/doctors')->with('message', "Doctor Updated Successfully");
+    }
+
+
+    // Change Ststus Usign Ajax
+    public function change_status(Request $request)
+    {
+        $doctor = Doctor::find($request->doctor_id);
+        $doctor->status = $request->status;
+        $doctor->save();
+    }
+
+
+    // Delete Doctor
+    public function destroy($id)
+    {
+        $delete_data = Doctor::find($id);
+        $delete_data->delete();
+        if ($delete_data) {
+            return redirect()->back()->with('message', "Doctor Deleted Successfully");
+        }
+    }
+
+}
