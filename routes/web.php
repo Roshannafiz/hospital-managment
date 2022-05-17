@@ -34,7 +34,7 @@ Route::get('/about-us', [\App\Http\Controllers\Frontend\AboutController::class, 
 Route::get('/doctors', [\App\Http\Controllers\Frontend\HomeController::class, 'doctor']);
 Route::get('/news', [\App\Http\Controllers\Frontend\HomeController::class, 'news']);
 Route::get('/contact-us', [\App\Http\Controllers\Frontend\HomeController::class, 'contact']);
-Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'redirect']);
+Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'redirect'])->middleware('auth', 'verified');
 
 
 Route::post('/appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'appointment']);
