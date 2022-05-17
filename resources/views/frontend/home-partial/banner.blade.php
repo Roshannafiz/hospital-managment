@@ -1,4 +1,5 @@
-<div class="page-hero bg-image overlay-dark" style="background-image: url('{{ asset('frontend/assets/img/bg_image_1.jpg') }}');">
+<div class="page-hero bg-image overlay-dark"
+     style="background-image: url('{{ asset('frontend/assets/img/bg_image_1.jpg') }}');">
     <div class="hero-section">
         <div class="container text-center wow zoomIn">
             <span class="subhead">Let's make your life happier</span>

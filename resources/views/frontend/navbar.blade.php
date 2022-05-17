@@ -30,11 +30,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Enter keywordfrontend" aria-label="Username" aria-describedby="icon-addon1">
+                    <input type="text" class="form-control" placeholder="Enter keywordfrontend" aria-label="Username"
+                           aria-describedby="icon-addon1">
                 </div>
             </form>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport"
+                    aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -59,6 +61,9 @@
                     @if(Route::has('login'))
 
                         @auth
+                            <li class="nav-item">
+                                <a style="background: #00D9A5 !important; color: white" class="nav-link" href="{{ url('/my-appointment') }}">My Appointment</a>
+                            </li>
                             <x-app-layout>
 
                             </x-app-layout>

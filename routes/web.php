@@ -24,8 +24,6 @@ Route::middleware([
 });
 
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Frontend Controller Here
@@ -39,14 +37,18 @@ Route::get('/contact-us', [\App\Http\Controllers\Frontend\HomeController::class,
 Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'redirect']);
 
 
+Route::post('/appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'appointment']);
+Route::get('/my-appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'my_appointment']);
+Route::get('/cancel-appoint/{id}', [\App\Http\Controllers\Frontend\AppointmectController::class, 'cancel_appoint']);
+
 
 /*
 |--------------------------------------------------------------------------
-| Admin Controller Here
+| Admin Route Here
 |--------------------------------------------------------------------------
 */
 
-// Speciality Controller
+// Speciality Route
 Route::get('/specialities', [\App\Http\Controllers\Admin\SpecialityController::class, 'index']);
 Route::get('/speciality-create', [\App\Http\Controllers\Admin\SpecialityController::class, 'doctor_create']);
 Route::post('/speciality-store', [\App\Http\Controllers\Admin\SpecialityController::class, 'store']);
@@ -55,9 +57,7 @@ Route::put('speciality-update/{id}', [\App\Http\Controllers\Admin\SpecialityCont
 Route::delete('speciality-delete/{id}', [\App\Http\Controllers\Admin\SpecialityController::class, 'destroy']);
 
 
-
-
-// Doctor Controller
+// Doctor Route
 Route::get('/doctors', [\App\Http\Controllers\Admin\DoctorController::class, 'index']);
 Route::get('/doctor-create', [\App\Http\Controllers\Admin\DoctorController::class, 'doctor_create']);
 Route::post('/doctor-store', [\App\Http\Controllers\Admin\DoctorController::class, 'store']);
@@ -67,8 +67,10 @@ Route::delete('doctor-delete/{id}', [\App\Http\Controllers\Admin\DoctorControlle
 Route::get('/doctor-status', [\App\Http\Controllers\Admin\DoctorController::class, 'change_status'])->name('doctor-status');
 
 
-
-
+// Appointment Route
+Route::get('/all-appointments', [\App\Http\Controllers\Admin\AppointmentController::class, 'all_appointment']);
+Route::get('/appoint-approved/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_approved']);
+Route::get('/appoint-cancel/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_cancel']);
 
 
 
