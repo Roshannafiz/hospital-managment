@@ -12,6 +12,10 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/maicons.css') }}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.css') }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/vendor/owl-carousel/css/owl.carousel.css') }}">

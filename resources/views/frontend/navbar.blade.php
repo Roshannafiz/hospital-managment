@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
+            <a class="navbar-brand" href="{{ url('/') }}"><span class="text-primary">One</span>-Health</a>
 
             <form action="#">
                 <div class="input-group input-navbar">
@@ -42,19 +42,19 @@
 
             <div class="collapse navbar-collapse" id="navbarSupport">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item {{ request()->is('/') ? 'active' : '' }} {{ request()->is('home') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ request()->is('about-us') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/about-us') }}">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/doctors') }}">Doctors</a>
+                    <li class="nav-item {{ request()->is('our-doctor') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ url('/our-doctor') }}">Doctors</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ request()->is('news') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/news') }}">News</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ request()->is('contact-us') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/contact-us') }}">Contact</a>
                     </li>
 
@@ -62,7 +62,8 @@
 
                         @auth
                             <li class="nav-item">
-                                <a style="background: #00D9A5 !important; color: white" class="nav-link" href="{{ url('/my-appointment') }}">My Appointment</a>
+                                <a style="background: #00D9A5 !important; color: white" class="nav-link"
+                                   href="{{ url('/my-appointment') }}">My Appointment</a>
                             </li>
                             <x-app-layout>
 

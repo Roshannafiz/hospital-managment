@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   line-height: 1.5;
   color: #343531;
 }

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class AboutController extends Controller
+class DoctorController extends Controller
 {
     public function index()
     {
@@ -20,7 +22,8 @@ class AboutController extends Controller
                 'doctors.image',
                 'doctors.status',
                 'specialities.speciality_name',
-            ])->inRandomOrder()->limit(3)->get();
-        return view('frontend.about.index', compact('doctors'));
+            ])->inRandomOrder()->limit(6)->get();
+        return view('frontend.doctor.index', compact('doctors'));
+
     }
 }

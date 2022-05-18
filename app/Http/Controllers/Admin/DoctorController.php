@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use File;
 
@@ -15,28 +16,46 @@ class DoctorController extends Controller
     // Our Doctor Index View
     public function index()
     {
-        // Get All Doctor
-        $doctors = DB::table('doctors')
-            ->join('specialities', 'doctors.speciality_id', '=', 'specialities.id')->select([
-                'doctors.id',
-                'doctors.doctor_name',
-                'doctors.phone',
-                'doctors.room_number',
-                'doctors.image',
-                'doctors.status',
-                'specialities.speciality_name',
-            ])->get();
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 1) {
+                // Get All Doctor
+                $doctors = DB::table('doctors')
+                    ->join('specialities', 'doctors.speciality_id', '=', 'specialities.id')->select([
+                        'doctors.id',
+                        'doctors.doctor_name',
+                        'doctors.phone',
+                        'doctors.room_number',
+                        'doctors.image',
+                        'doctors.status',
+                        'specialities.speciality_name',
+                    ])->get();
 
-        return view('admin.doctor.index', compact('doctors'));
+                return view('admin.doctor.index', compact('doctors'));
+            } else {
+                return redirect()->back();
+            }
+
+        } else {
+            return redirect('/login');
+        }
     }
 
 
     // Doctor Create View
     public function doctor_create()
     {
-        // Get All Speciality
-        $specialities = Speciality::all();
-        return view('admin.doctor.create', compact('specialities'));
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 1) {
+                // Get All Speciality
+                $specialities = Speciality::all();
+                return view('admin.doctor.create', compact('specialities'));
+            } else {
+                return redirect()->back();
+            }
+
+        } else {
+            return redirect('/login');
+        }
     }
 
 

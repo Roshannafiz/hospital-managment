@@ -51,7 +51,7 @@ class HomeController extends Controller
                     'doctors.image',
                     'doctors.status',
                     'specialities.speciality_name',
-                ])->get();
+                ])->limit(6)->get();
             return view('frontend.home', compact('doctors'));
         }
     }

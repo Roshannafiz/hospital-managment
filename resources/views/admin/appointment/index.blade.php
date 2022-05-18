@@ -43,6 +43,9 @@
                                         <th>
                                             Canceled
                                         </th>
+                                        <th>
+                                            Send Mail
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -83,7 +86,15 @@
                                             </td>
 
                                             <td>
-                                                <a href="{{ url('/appoint-cancel/'.$appointment->id) }}" style="padding: 10px 10px" class="btn btn-danger">Cancel</a>
+                                                <a href="{{ url('/appoint-cancel/'.$appointment->id) }}"
+                                                   style="padding: 10px 10px" class="btn btn-danger">Cancel</a>
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ url('/send-mail/'.$appointment->id) }}"
+                                                   style="padding: 10px 10px" class="btn btn-info">
+                                                    Send Mail
+                                                </a>
                                             </td>
 
                                         </tr>

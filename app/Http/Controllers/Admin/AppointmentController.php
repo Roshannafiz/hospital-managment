@@ -5,14 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
     // All Appointments
     public function all_appointment()
     {
-        $appointments = Appointment::all();
-        return view('admin.appointment.index', compact('appointments'));
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 1) {
+                $appointments = Appointment::all();
+                return view('admin.appointment.index', compact('appointments'));
+            } else {
+                return redirect()->back();
+            }
+
+        } else {
+            return redirect('/login');
+        }
     }
 
 

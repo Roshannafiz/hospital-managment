@@ -30,12 +30,11 @@ Route::middleware([
 |--------------------------------------------------------------------------
 */
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index']);
-Route::get('/about-us', [\App\Http\Controllers\Frontend\AboutController::class, 'about']);
-Route::get('/doctors', [\App\Http\Controllers\Frontend\HomeController::class, 'doctor']);
-Route::get('/news', [\App\Http\Controllers\Frontend\HomeController::class, 'news']);
-Route::get('/contact-us', [\App\Http\Controllers\Frontend\HomeController::class, 'contact']);
 Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'redirect'])->middleware('auth', 'verified');
-
+Route::get('/about-us', [\App\Http\Controllers\Frontend\AboutController::class, 'index']);
+Route::get('/our-doctor', [\App\Http\Controllers\Frontend\DoctorController::class, 'index']);
+Route::get('/news', [\App\Http\Controllers\Frontend\NewsController::class, 'index']);
+Route::get('/contact-us', [\App\Http\Controllers\Frontend\ContactController::class, 'index']);
 
 Route::post('/appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'appointment']);
 Route::get('/my-appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'my_appointment']);
@@ -50,7 +49,7 @@ Route::get('/cancel-appoint/{id}', [\App\Http\Controllers\Frontend\AppointmectCo
 
 // Speciality Route
 Route::get('/specialities', [\App\Http\Controllers\Admin\SpecialityController::class, 'index']);
-Route::get('/speciality-create', [\App\Http\Controllers\Admin\SpecialityController::class, 'doctor_create']);
+Route::get('/speciality-create', [\App\Http\Controllers\Admin\SpecialityController::class, 'speciality_create']);
 Route::post('/speciality-store', [\App\Http\Controllers\Admin\SpecialityController::class, 'store']);
 Route::get('/speciality-edit/{id}', [\App\Http\Controllers\Admin\SpecialityController::class, 'edit']);
 Route::put('speciality-update/{id}', [\App\Http\Controllers\Admin\SpecialityController::class, 'update']);
@@ -73,7 +72,9 @@ Route::get('/appoint-approved/{id}', [\App\Http\Controllers\Admin\AppointmentCon
 Route::get('/appoint-cancel/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_cancel']);
 
 
-
+// Send Mail Route
+Route::get('/send-mail/{id}', [\App\Http\Controllers\Admin\SendMailController::class, 'index']);
+Route::post('/send-email/{id}', [\App\Http\Controllers\Admin\SendMailController::class, 'send_email']);
 
 
 

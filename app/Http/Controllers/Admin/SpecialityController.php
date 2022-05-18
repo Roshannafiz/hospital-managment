@@ -18,7 +18,7 @@ class SpecialityController extends Controller
 
 
     // Speciality Create View
-    public function doctor_create()
+    public function speciality_create()
     {
         return view('admin.speciality.create');
     }

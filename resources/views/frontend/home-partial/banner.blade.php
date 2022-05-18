@@ -1,3 +1,12 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="page-hero bg-image overlay-dark"
      style="background-image: url('{{ asset('frontend/assets/img/bg_image_1.jpg') }}');">
     <div class="hero-section">
