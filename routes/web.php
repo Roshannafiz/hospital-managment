@@ -70,6 +70,7 @@ Route::get('/doctor-status', [\App\Http\Controllers\Admin\DoctorController::clas
 Route::get('/all-appointments', [\App\Http\Controllers\Admin\AppointmentController::class, 'all_appointment']);
 Route::get('/appoint-approved/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_approved']);
 Route::get('/appoint-cancel/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_cancel']);
+Route::delete('/appoint-delete/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'destroy']);
 
 
 // Send Mail Route

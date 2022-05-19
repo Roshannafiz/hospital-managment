@@ -44,6 +44,9 @@
                                             Canceled
                                         </th>
                                         <th>
+                                            Delete
+                                        </th>
+                                        <th>
                                             Send Mail
                                         </th>
                                     </tr>
@@ -88,6 +91,18 @@
                                             <td>
                                                 <a href="{{ url('/appoint-cancel/'.$appointment->id) }}"
                                                    style="padding: 10px 10px" class="btn btn-danger">Cancel</a>
+                                            </td>
+
+                                            <td>
+                                                <form action="{{ url('/appoint-delete/'.$appointment->id) }}"
+                                                      method="POST" class="mt-1">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn"
+                                                            style="padding: 10px 13px; background: red; color: white">
+                                                        Delete
+                                                    </button>
+                                                </form>
                                             </td>
 
                                             <td>

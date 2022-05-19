@@ -44,4 +44,15 @@ class AppointmentController extends Controller
         $data->save();
         return redirect()->back();
     }
+
+    // Appointment Delete
+    public function destroy($id)
+    {
+        $delete_data = Appointment::find($id);
+        $delete_data->delete();
+
+        if($delete_data){
+            return redirect()->back()->with('message', 'Appointment Deleted');
+        }
+    }
 }
