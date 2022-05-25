@@ -41,6 +41,12 @@ Route::get('/my-appointment', [\App\Http\Controllers\Frontend\AppointmectControl
 Route::get('/cancel-appoint/{id}', [\App\Http\Controllers\Frontend\AppointmectController::class, 'cancel_appoint']);
 
 
+// Search Doctor
+Route::post('/find-doctor', [\App\Http\Controllers\Frontend\SearchDoctorController::class, 'find_doctor'])->name('find-doctor');
+// Search Blog
+Route::post('/find-blog', [\App\Http\Controllers\Frontend\SearchBlogController::class, 'find_blog'])->name('find-blog');
+
+
 /*
 |--------------------------------------------------------------------------
 | Admin Route Here
@@ -64,6 +70,16 @@ Route::get('/doctor-edit/{id}', [\App\Http\Controllers\Admin\DoctorController::c
 Route::put('doctor-update/{id}', [\App\Http\Controllers\Admin\DoctorController::class, 'update']);
 Route::delete('doctor-delete/{id}', [\App\Http\Controllers\Admin\DoctorController::class, 'destroy']);
 Route::get('/doctor-status', [\App\Http\Controllers\Admin\DoctorController::class, 'change_status'])->name('doctor-status');
+
+
+// Blog Route
+Route::get('/blogs', [\App\Http\Controllers\Admin\BlogController::class, 'index']);
+Route::get('/blog-create', [\App\Http\Controllers\Admin\BlogController::class, 'blog_create']);
+Route::post('/blog-store', [\App\Http\Controllers\Admin\BlogController::class, 'store']);
+Route::delete('blog-delete/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'destroy']);
+Route::get('/blog-edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'edit']);
+Route::put('/blog-update/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update']);
+Route::get('/blog-status', [\App\Http\Controllers\Admin\BlogController::class, 'change_status'])->name('blog-status');
 
 
 // Appointment Route

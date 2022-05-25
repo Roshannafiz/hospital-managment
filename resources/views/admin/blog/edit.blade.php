@@ -20,53 +20,40 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h4 class="card-title">Edit Doctor Form</h4>
+                            <h4 class="card-title">Edit Blog Form</h4>
                             <p class="card-description">
-                                Edit Doctors
+                                Edit Blog
                             </p>
-                            <form class="forms-sample" action="{{ '/doctor-update/'. $doctor['id'] }}" method="POST"
+                            <form class="forms-sample" action="{{ '/blog-update/'. $blog['id'] }}" method="POST"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <label for="doctor-name">Doctor Name</label>
-                                    <input type="text" class="form-control" name="doctor_name"
-                                           value="{{ $doctor['doctor_name'] }}" id="doctor_name"
-                                           placeholder="Doctor Name">
+                                    <label for="title">Doctor Name</label>
+                                    <input type="text" class="form-control" name="title"
+                                           value="{{ $blog['title'] }}" id="title"
+                                           placeholder="Title">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="phone" class="form-control" value="{{ $doctor['phone'] }}" name="phone"
-                                           id="phone"
-                                           placeholder="Phone">
+                                    <label for="tag">Tag</label>
+                                    <input type="text" class="form-control" value="{{ $blog['tag'] }}" name="tag"
+                                           id="tag"
+                                           placeholder="Tag">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="speciality">Speciality</label>
-                                    <select style="color: black !important;" name="speciality" class="form-control"
-                                            id="speciality">
-                                        @foreach ($specialities as $speciality)
-                                            <option value="{{ $speciality->id }}"
-                                                {{ $speciality->id == $doctor->speciality_id ? 'selected' : '' }}>
-                                                {{ $speciality->speciality_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
 
                                 <div class="form-group">
-                                    <label for="room-number">Room Number</label>
-                                    <input type="number" class="form-control" value="{{ $doctor['room_number'] }}"
-                                           name="room_number" id="room_number"
-                                           placeholder="Room Number">
+                                    <label for="description">Description</label>
+                                    <textarea name="description" id="textEditor"
+                                              class="form-control">{{ $blog['description'] }}</textarea>
                                 </div>
 
                                 <div style="padding: 30px 0px !important;">
                                     <span>Old Image</span>
-                                    @if ($doctor->image)
+                                    @if ($blog->image)
                                         <img style="width: 80px; height: 80px; padding-top: 15px"
-                                             src="{{ asset('admin/images/upload-doctor/'. $doctor->image) }}"
+                                             src="{{ asset('admin/images/upload-blog/'. $blog->image) }}"
                                              alt="">
                                     @endif
                                 </div>
@@ -77,7 +64,7 @@
                                 </div>
                                 <button type="submit" style="background: #4B49AC" class="btn btn-primary mr-2">Submit
                                 </button>
-                                <a href="{{ url('/doctors') }}" class="btn btn-light">
+                                <a href="{{ url('/blogs') }}" class="btn btn-light">
                                     Cancel
                                 </a>
                             </form>

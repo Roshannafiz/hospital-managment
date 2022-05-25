@@ -1,3 +1,4 @@
+@section('title', 'Doctor')
 <!---------- Include Head File --------->
 @include('frontend.head')
 

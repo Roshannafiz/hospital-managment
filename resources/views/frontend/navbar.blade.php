@@ -25,15 +25,18 @@
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><span class="text-primary">One</span>-Health</a>
 
-            <form action="#">
-                <div class="input-group input-navbar">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Enter keywordfrontend" aria-label="Username"
-                           aria-describedby="icon-addon1">
+            <div class="input-group input-navbar">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
                 </div>
-            </form>
+                <input type="text" onfocus="showSearchResult()" onblur="hideSearchResult()" class="form-control"
+                       id="search" placeholder="Doctors ..." aria-label="Username"
+                       aria-describedby="icon-addon1">
+                <div id="suggestDoctor"
+                     style="position: absolute; top: 60px; left: 0px; z-index: 21; width: 785px; border-radius: 5px; background: #fffefe">
+
+                </div>
+            </div>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport"
                     aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,3 +89,12 @@
         </div> <!-- .container -->
     </nav>
 </header>
+<script>
+    function showSearchResult() {
+        $('#suggestDoctor').slideDown()
+    }
+
+    function hideSearchResult() {
+        $('#suggestDoctor').slideUp()
+    }
+</script>

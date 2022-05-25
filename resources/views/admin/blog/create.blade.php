@@ -20,25 +20,37 @@
                                     </ul>
                                 </div>
                             @endif
-                            <h4 class="card-title">Edit Speciality Form</h4>
+                            <h4 class="card-title">Add Blog Form</h4>
                             <p class="card-description">
-                                Edit Speciality
+                                Add Blog
                             </p>
-                            <form class="forms-sample" action="{{ '/speciality-update/'. $speciality['id'] }}"
-                                  method="POST"
+                            <form class="forms-sample" action="{{ '/blog-store' }}" method="POST"
                                   enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
                                 <div class="form-group">
-                                    <label for="doctor-name">Speciality Name</label>
-                                    <input type="text" class="form-control" name="speciality_name"
-                                           value="{{ $speciality['speciality_name'] }}" id="doctor_name"
-                                           placeholder="Speciality Name">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" name="title" id="title"
+                                           placeholder="Title">
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="tag">Tag</label>
+                                    <input type="text" class="form-control" name="tag" id="tag"
+                                           placeholder="Tag">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea name="description" id="textEditor" class="form-control"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input type="file" class="dropify" name="image" id="image">
+                                </div>
                                 <button type="submit" style="background: #4B49AC" class="btn btn-primary mr-2">Submit
                                 </button>
-                                <a href="{{ url('/specialities') }}" class="btn btn-light">
+                                <a href="{{ url('/blogs   ') }}" class="btn btn-light">
                                     Cancel
                                 </a>
                             </form>

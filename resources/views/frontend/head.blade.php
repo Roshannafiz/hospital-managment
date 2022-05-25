@@ -7,8 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <meta name="copyright" content="MACode ID, https://macodeid.com/">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>One Health - Medical Center</title>
+    <title>One Health - @yield('title')</title>
+
+    <!----------- Include Jquery File ---------->
+    <script src="{{ asset('frontend/assets/js/jquery-3.5.1.min.js') }}"></script>
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/maicons.css') }}">
 

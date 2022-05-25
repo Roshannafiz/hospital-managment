@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,6 +42,9 @@ class HomeController extends Controller
         if (Auth::id()) {
             return redirect('/home');
         } else {
+            // Get All Active Blog
+            $blogs = Blog::where('status', 1)->limit(3)->get();
+
             // Get All Doctor
             $doctors = DB::table('doctors')
                 ->join('specialities', 'doctors.speciality_id', '=', 'specialities.id')->select([
@@ -52,7 +56,8 @@ class HomeController extends Controller
                     'doctors.status',
                     'specialities.speciality_name',
                 ])->limit(6)->get();
-            return view('frontend.home', compact('doctors'));
+
+            return view('frontend.home', compact('doctors', 'blogs'));
         }
     }
 

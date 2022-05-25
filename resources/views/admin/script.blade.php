@@ -26,6 +26,9 @@
 <script src="{{ asset('admin/js/dropify.js') }}"></script>
 <script src="{{ asset('admin/js/dropify.min.js') }}"></script>
 
+<!-- summernote js -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{ asset('admin/js/dashboard.js') }}"></script>

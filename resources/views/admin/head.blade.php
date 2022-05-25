@@ -26,6 +26,8 @@
     <!-- End plugin css for this page -->
     <!---------------- Toastr Css --------------->
     <link rel="stylesheet" href="{{ asset('admin/toastr/toastr.min.css') }}">
+    <!-- summernote css -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('admin/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->

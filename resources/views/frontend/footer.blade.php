@@ -46,6 +46,6 @@
 
         <hr>
 
-        <p id="copyright">Copyright &copy; 2020 <a href="https://macodeid.com/" target="_blank">MACode ID</a>. All right reserved</p>
+        <p id="copyright">Copyright &copy; 2022 <a href="http://roshannafiz.com/" target="_blank">Roshan Nafiz</a>. All right reserved</p>
     </div>
 </footer>
