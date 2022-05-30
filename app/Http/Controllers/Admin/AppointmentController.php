@@ -45,6 +45,13 @@ class AppointmentController extends Controller
         return redirect()->back();
     }
 
+    // Appointment View
+    public function appointment_view($id)
+    {
+        $appoint = Appointment::find($id);
+        return view('admin.appointment.appointment-view', compact('appoint'));
+    }
+
     // Appointment Delete
     public function destroy($id)
     {

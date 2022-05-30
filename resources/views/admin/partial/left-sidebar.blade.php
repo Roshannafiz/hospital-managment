@@ -64,14 +64,14 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item {{ 'blogs' == request()->path() ? 'active' : '' }} {{ 'blog-edit/'.request()->route('id') == request()->path() ? 'active' : '' }} {{ 'blog-create' == request()->path() ? 'active' : '' }}">
+        <li class="nav-item {{ 'blogs' == request()->path() ? 'active' : '' }} {{ 'blog-view/'.request()->route('id') == request()->path() ? 'active' : '' }} {{ 'blog-edit/'.request()->route('id') == request()->path() ? 'active' : '' }} {{ 'blog-create' == request()->path() ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="icon-layout menu-icon"></i>
                 <span class="menu-title">Blog</span>
                 <i class="menu-arrow"></i>
             </a>
             <div
-                class="collapse {{ 'blogs' == request()->path() ? 'show' : '' }} {{ 'blog-edit/'.request()->route('id') == request()->path() ? 'show' : '' }} {{ 'blog-create' == request()->path() ? 'show' : '' }}"
+                class="collapse {{ 'blogs' == request()->path() ? 'show' : '' }} {{ 'blog-view/'.request()->route('id') == request()->path() ? 'show' : '' }} {{ 'blog-edit/'.request()->route('id') == request()->path() ? 'show' : '' }} {{ 'blog-create' == request()->path() ? 'show' : '' }}"
                 id="auth">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">

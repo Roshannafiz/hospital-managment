@@ -33,8 +33,11 @@ Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class, 'index'])
 Route::get('/home', [\App\Http\Controllers\Frontend\HomeController::class, 'redirect'])->middleware('auth', 'verified');
 Route::get('/about-us', [\App\Http\Controllers\Frontend\AboutController::class, 'index']);
 Route::get('/our-doctor', [\App\Http\Controllers\Frontend\DoctorController::class, 'index']);
+Route::get('/doctor-details/{id}', [\App\Http\Controllers\Frontend\DoctorController::class, 'doctor_details']);
 Route::get('/news', [\App\Http\Controllers\Frontend\NewsController::class, 'index']);
+Route::get('/blog-details/{id}', [\App\Http\Controllers\Frontend\NewsController::class, 'blog_view']);
 Route::get('/contact-us', [\App\Http\Controllers\Frontend\ContactController::class, 'index']);
+Route::post('/send-message', [\App\Http\Controllers\Frontend\ContactController::class, 'sendEmail']);
 
 Route::post('/appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'appointment']);
 Route::get('/my-appointment', [\App\Http\Controllers\Frontend\AppointmectController::class, 'my_appointment']);
@@ -68,7 +71,9 @@ Route::get('/doctor-create', [\App\Http\Controllers\Admin\DoctorController::clas
 Route::post('/doctor-store', [\App\Http\Controllers\Admin\DoctorController::class, 'store']);
 Route::get('/doctor-edit/{id}', [\App\Http\Controllers\Admin\DoctorController::class, 'edit']);
 Route::put('doctor-update/{id}', [\App\Http\Controllers\Admin\DoctorController::class, 'update']);
+Route::get('/doctor-view/{id}', [\App\Http\Controllers\Admin\DoctorController::class, 'doctor_view']);
 Route::delete('doctor-delete/{id}', [\App\Http\Controllers\Admin\DoctorController::class, 'destroy']);
+Route::get('/export-doctor-pdf', [\App\Http\Controllers\Admin\DoctorController::class, 'export_doctor_pdf']);
 Route::get('/doctor-status', [\App\Http\Controllers\Admin\DoctorController::class, 'change_status'])->name('doctor-status');
 
 
@@ -79,6 +84,7 @@ Route::post('/blog-store', [\App\Http\Controllers\Admin\BlogController::class, '
 Route::delete('blog-delete/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'destroy']);
 Route::get('/blog-edit/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'edit']);
 Route::put('/blog-update/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'update']);
+Route::get('/blog-view/{id}', [\App\Http\Controllers\Admin\BlogController::class, 'blog_view']);
 Route::get('/blog-status', [\App\Http\Controllers\Admin\BlogController::class, 'change_status'])->name('blog-status');
 
 
@@ -86,6 +92,7 @@ Route::get('/blog-status', [\App\Http\Controllers\Admin\BlogController::class, '
 Route::get('/all-appointments', [\App\Http\Controllers\Admin\AppointmentController::class, 'all_appointment']);
 Route::get('/appoint-approved/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_approved']);
 Route::get('/appoint-cancel/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appoint_cancel']);
+Route::get('/appointment-view/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'appointment_view']);
 Route::delete('/appoint-delete/{id}', [\App\Http\Controllers\Admin\AppointmentController::class, 'destroy']);
 
 

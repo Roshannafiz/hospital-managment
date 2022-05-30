@@ -7,14 +7,14 @@
                     <div class="card-blog">
                         <div class="header">
                             <div class="post-category">
-                                <a href="#">{{ $blog['tag'] }}</a>
+                                <span>{{ $blog['tag'] }}</span>
                             </div>
-                            <a href="#" class="post-thumb">
+                            <a href="{{ url('blog-details/' . $blog['id']) }}" class="post-thumb">
                                 <img src="{{ asset('admin/images/upload-blog/'. $blog['image']) }}" alt="">
                             </a>
                         </div>
                         <div class="body">
-                            <h5 class="post-title"><a href="#">{{ $blog['title'] }}</a></h5>
+                            <h5 class="post-title"><a href="{{ url('blog-details/' . $blog['id']) }}">{{ $blog['title'] }}</a></h5>
                             <div class="site-info">
                                 <div class="avatar mr-2">
                                     <div class="avatar-img">

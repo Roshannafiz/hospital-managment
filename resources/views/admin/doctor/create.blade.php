@@ -34,6 +34,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="doctor-name">Description</label>
+                                    <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="phone">Phone</label>
                                     <input type="phone" class="form-control" name="phone" id="phone"
                                            placeholder="Phone">

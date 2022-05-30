@@ -16,46 +16,48 @@ class AppointmectController extends Controller
     public function appointment(Request $request)
     {
 
-        if ($request->isMethod('post')) {
-            $data = $request->all();
-        }
-
-        $rules = [
-            'name' => 'required',
-            'email' => 'required | email',
-            'date' => 'required',
-            'doctor' => 'required',
-            'phone' => 'required',
-            'message' => 'required',
-        ];
-
-        $customMessage = [
-            'name.required' => 'Name is required',
-            'email.required' => 'Email is required',
-            'email.email' => 'Email must be a email address',
-            'date.required' => 'Date is required',
-            'doctor.required' => 'Doctor is required',
-            'phone.required' => 'Phone is required',
-            'message.required' => 'Message is required',
-        ];
-        $validator = Validator::make($data, $rules, $customMessage);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
-        }
-
-        $appointment = new Appointment();
-        $appointment->name = $data['name'];
-        $appointment->email = $data['email'];
-        $appointment->date = $data['date'];
-        $appointment->doctor = $data['doctor'];
-        $appointment->phone = $data['phone'];
-        $appointment->message = $data['message'];
-        $appointment->status = 'In Progress';
         if (Auth::id()) {
-            $appointment->user_id = Auth::user()->id;
+            if ($request->isMethod('post')) {
+                $data = $request->all();
+            }
+
+            $rules = [
+                'name' => 'required',
+                'email' => 'required | email',
+                'date' => 'required',
+                'doctor' => 'required',
+                'phone' => 'required',
+                'message' => 'required',
+            ];
+
+            $customMessage = [
+                'name.required' => 'Name is required',
+                'email.required' => 'Email is required',
+                'email.email' => 'Email must be a email address',
+                'date.required' => 'Date is required',
+                'doctor.required' => 'Doctor is required',
+                'phone.required' => 'Phone is required',
+                'message.required' => 'Message is required',
+            ];
+            $validator = Validator::make($data, $rules, $customMessage);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator);
+            }
+
+            $appointment = new Appointment();
+            $appointment->user_id = Auth::id();
+            $appointment->name = $data['name'];
+            $appointment->email = $data['email'];
+            $appointment->date = $data['date'];
+            $appointment->doctor = $data['doctor'];
+            $appointment->phone = $data['phone'];
+            $appointment->message = $data['message'];
+            $appointment->status = 'In Progress';
+            $appointment->save();
+            return redirect('/my-appointment')->with('message', "Appointment Request Successfully. We Will Contact With You Soon... 🙂");
+        } else {
+            return redirect('/login');
         }
-        $appointment->save();
-        return redirect('/my-appointment')->with('message', "Appointment Request Successfully. We Will Contact With You Soon... 🙂");
 
     }
 

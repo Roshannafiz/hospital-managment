@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->integer('speciality_id');
             $table->string('doctor_name')->nullable();
+            $table->text('description')->nullable();
             $table->string('phone')->nullable();
-            $table->string('room_number')->nullable();
+            $table->integer('room_number')->nullable();
             $table->string('image')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

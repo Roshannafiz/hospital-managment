@@ -67,6 +67,15 @@ class BlogController extends Controller
     }
 
 
+    // Blog View
+    public function blog_view($id)
+    {
+        // Get Blog Details
+        $blog = Blog::find($id);
+        return view('admin.blog.blog-view', compact('blog'));
+    }
+
+
     // Update Blog To First Get ID
     public function edit($id)
     {

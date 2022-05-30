@@ -16,6 +16,9 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
             if (Auth::user()->usertype == '0') {
+                // Get All Active Blog
+                $blogs = Blog::where('status', 1)->limit(3)->get();
+
                 // Get All Doctor
                 $doctors = DB::table('doctors')
                     ->join('specialities', 'doctors.speciality_id', '=', 'specialities.id')->select([
@@ -27,7 +30,7 @@ class HomeController extends Controller
                         'doctors.status',
                         'specialities.speciality_name',
                     ])->get();
-                return view('frontend.home', compact('doctors'));
+                return view('frontend.home', compact('doctors', 'blogs'));
             } else {
                 return view('admin.home');
             }

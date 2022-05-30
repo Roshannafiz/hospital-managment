@@ -1,6 +1,6 @@
 <ul style="padding: 0; margin-bottom: 0 !important;">
     @forelse($doctors as $doctor)
-        <a href="">
+        <a href="{{ url('/doctor-details/'. $doctor->id) }}">
             <li style="list-style: none; line-height: 180px">
                 <img src="{{ asset('admin/images/upload-doctor/' .$doctor['image']) }}"
                      alt="" style="width: 140px; height: 160px">

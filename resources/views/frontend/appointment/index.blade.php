@@ -25,36 +25,44 @@
                 @endif
             </div>
 
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">Doctor Name</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                @foreach($appoints as $appoint)
+            @if($appoints->count())
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ $appoint['doctor'] }}</th>
-                        <td>{{ $appoint['date'] }}</td>
-                        <td>{{ $appoint['message'] }}</td>
-                        <td>{{ $appoint['status'] }}</td>
-                        <td>
-                            <a onclick="return confirm('Are You Sure To Delete')"
-                               href="{{ url('/cancel-appoint/'. $appoint['id']) }}"
-                               class="btn btn-danger btn-sm">Cancel</a>
-                        </td>
+                        <th scope="col">Doctor Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+
+                    @foreach($appoints as $appoint)
+                        <tr>
+                            <th scope="row">{{ $appoint['doctor'] }}</th>
+                            <td>{{ $appoint['date'] }}</td>
+                            <td>{{ $appoint['message'] }}</td>
+                            <td>{{ $appoint['status'] }}</td>
+                            <td>
+                                <a onclick="return confirm('Are You Sure To Delete')"
+                                   href="{{ url('/cancel-appoint/'. $appoint['id']) }}"
+                                   class="btn btn-danger btn-sm">Cancel</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <h2 style="text-align: center; font-size: 25px">You Don't Have Any Appointments</h2>
+            @endif
         </div>
     </div>
 </div>
+
+
+<!----------- Include Application File ----------->
+@include('frontend.home-partial.application')
 
 <!---------- Include Footer File --------->
 @include('frontend.footer')

@@ -29,9 +29,9 @@
             </div>
             <div class="col-sm-6 col-lg-3 py-3">
                 <h5>Contact</h5>
-                <p class="footer-link mt-2">351 Willow Street Franklin, MA 02038</p>
-                <a href="#" class="footer-link">701-573-7582</a>
-                <a href="#" class="footer-link">healthcare@temporary.net</a>
+                <p class="footer-link mt-2">Bangladesh, Dhaka Tanore, Kamargaon</p>
+                <a href="#" class="footer-link">+880 018 627 017 17 </a>
+                <a href="#" class="footer-link">mdroshannafiz@gmail.com</a>
 
                 <h5 class="mt-3">Social Media</h5>
                 <div class="footer-sosmed mt-3">

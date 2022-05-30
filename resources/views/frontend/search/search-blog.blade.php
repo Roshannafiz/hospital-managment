@@ -1,6 +1,6 @@
 <ul style="padding: 0; margin-bottom: 0 !important;">
     @forelse($blogs as $blog)
-        <a href="">
+        <a href="{{ url('blog-details/' . $blog['id']) }}">
             <li style="list-style: none; line-height: 120px">
                 <img src="{{ asset('admin/images/upload-blog/' .$blog['image']) }}"
                      alt="" style="width: 130px; height: 80px">

@@ -3,10 +3,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 text-sm">
-                    <div class="site-info">
-                        <a href="#"><span class="mai-call text-primary"></span> +880 018 627 017 17</a>
+                    <div class="site-info" style="color: #A1AAA7">
+                        <span class="mai-call text-primary"></span> +880 018 627 017 17
                         <span class="divider">|</span>
-                        <a href="#"><span class="mai-mail text-primary"></span> mdroshannafiz@gmail.com</a>
+                        <a href="mailto:mdroshannafiz@gmail.com" target="_blank"><span class="mai-mail text-primary"></span> mdroshannafiz@gmail.com</a>
                     </div>
                 </div>
                 <div class="col-sm-4 text-right text-sm">
@@ -34,7 +34,6 @@
                        aria-describedby="icon-addon1">
                 <div id="suggestDoctor"
                      style="position: absolute; top: 60px; left: 0px; z-index: 21; width: 785px; border-radius: 5px; background: #fffefe">
-
                 </div>
             </div>
 
@@ -51,10 +50,10 @@
                     <li class="nav-item {{ request()->is('about-us') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/about-us') }}">About Us</a>
                     </li>
-                    <li class="nav-item {{ request()->is('our-doctor') ? 'active' : '' }}">
+                    <li class="nav-item {{ request()->is('our-doctor') ? 'active' : '' }} {{ 'doctor-details/'.request()->route('id') == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/our-doctor') }}">Doctors</a>
                     </li>
-                    <li class="nav-item {{ request()->is('news') ? 'active' : '' }}">
+                    <li class="nav-item {{ request()->is('news') ? 'active' : '' }} {{ 'blog-details/'.request()->route('id') == request()->path() ? 'active' : '' }}">
                         <a class="nav-link" href="{{ url('/news') }}">News</a>
                     </li>
                     <li class="nav-item {{ request()->is('contact-us') ? 'active' : '' }}">

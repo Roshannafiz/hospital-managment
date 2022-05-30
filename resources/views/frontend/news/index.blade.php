@@ -35,15 +35,15 @@
                             <div class="card-blog">
                                 <div class="header">
                                     <div class="post-category">
-                                        <a href="#">{{ $blog['tag'] }}</a>
+                                        <span>{{ $blog['tag'] }}</span>
                                     </div>
-                                    <a href="#" class="post-thumb">
+                                    <a href="{{ url('blog-details/' . $blog['id']) }}" class="post-thumb">
                                         <img src="{{ asset('admin/images/upload-blog/'. $blog['image']) }}" alt="">
                                     </a>
                                 </div>
                                 <div class="body">
                                     <h5 class="post-title">
-                                        <a href="#">
+                                        <a href="{{ url('blog-details/' . $blog['id']) }}">
                                             {{ $blog['title'] }}
                                         </a>
                                     </h5>
@@ -55,7 +55,7 @@
                                             </div>
                                             <span>Admin</span>
                                         </div>
-                                        <span class="mai-time"></span> {{ $blog['created_at']->format('d-m-Y') }}
+                                        <span class="mai-time"></span> {{ $blog['created_at']->diffForHumans() }}
                                     </div>
                                 </div>
                             </div>
@@ -65,20 +65,9 @@
                     <div class="col-12 my-5">
                         <nav aria-label="Page Navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                                <li class="page-item active" aria-current="page">
-                                    <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
+                                {{ $blogs->links() }}
                             </ul>
+
                         </nav>
                     </div>
                 </div> <!-- .row -->
@@ -88,7 +77,8 @@
                     <div class="sidebar-block">
                         <h3 class="sidebar-title">Search</h3>
                         <div class="form-group">
-                            <input type="text" id="searchBlog" onfocus="showBlogSearchResult()" onblur="hideBlogSearchResult()" class="form-control" placeholder="Blogs ...">
+                            <input type="text" id="searchBlog" onfocus="showBlogSearchResult()"
+                                   onblur="hideBlogSearchResult()" class="form-control" placeholder="Blogs ...">
                         </div>
                         <div id="suggestBlog"
                              style="position: absolute; top: 170px; left: 0px; z-index: 21; border-radius: 8px; border: 1px solid #d9d9d9; box-shadow: 0 4px 12px rgb(154 159 151 / 20%); width: 725px; background: #fffefe">
@@ -110,20 +100,20 @@
                         <h3 class="sidebar-title">Recent Blog</h3>
                         @foreach($recent_blogs as $recent_blog)
                             <div class="blog-item">
-                                <a class="post-thumb" href="">
+                                <a class="post-thumb" href="{{ url('blog-details/' . $recent_blog['id']) }}">
                                     <img src="{{ asset('admin/images/upload-blog/'. $recent_blog['image']) }}" alt="">
                                 </a>
                                 <div class="content">
                                     <h5 class="post-title">
-                                        <a href="#">
+                                        <a href="{{ url('blog-details/' . $recent_blog['id']) }}">
                                             {{ $recent_blog['title'] }}
                                         </a>
                                     </h5>
                                     <div class="meta">
-                                        <a href="#"><span
+                                        <a href="{{ url('blog-details/' . $recent_blog['id']) }}"><span
                                                 class="mai-calendar"></span> {{ $recent_blog['created_at']->format('y-m-d') }}
                                         </a>
-                                        <a href="#"><span class="mai-person"></span> Admin</a>
+                                        <a href="{{ url('blog-details/' . $recent_blog['id']) }}"><span class="mai-person"></span> Admin</a>
                                     </div>
                                 </div>
                             </div>

@@ -11,6 +11,18 @@
                 <div class="col-lg-8 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
+                            <div class="speciality" style="padding-bottom: 30px">
+                                <a href="{{ url('/speciality-create') }}" class="btn btn-sm"
+                                   style="float: right; color: white; background: #7d5fff">
+                                    Add Speciality
+                                    <svg style="display: inline !important;" xmlns="http://www.w3.org/2000/svg"
+                                         width="16" height="16" fill="currentColor"
+                                         class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                    </svg>
+                                </a>
+                            </div>
                             <h4 class="card-title">Our Speciality</h4>
                             <div class="table-responsive">
                                 <table id="datatable" class="table table-striped">
@@ -36,7 +48,7 @@
                                                 <div class="col-md-2">
                                                     <a href="{{ url('speciality-edit/' . $speciality->id) }}"
                                                        class="btn mt-1"
-                                                       style="padding: 10px 13px; background: #46c35f; color: white">
+                                                       style="padding: 10px 13px; background: #ff9f43; color: white">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                              fill="currentColor" class="bi bi-pencil-square"
                                                              viewBox="0 0 16 16">

@@ -13,7 +13,7 @@
         <div class="container text-center wow zoomIn">
             <span class="subhead">Let's make your life happier</span>
             <h1 class="display-4">Healthy Living</h1>
-            <a href="{{ url('/our-doctor') }}" class="btn btn-primary">Let's Consult</a>
+            <a href="{{ url('/contact-us') }}" class="btn btn-primary">Let's Consult</a>
         </div>
     </div>
 </div>

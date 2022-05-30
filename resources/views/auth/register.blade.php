@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('frontend/assets/img/mainlogo.png') }}" alt="">
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -61,7 +63,7 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-4" style="background: #00D9A5">
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
